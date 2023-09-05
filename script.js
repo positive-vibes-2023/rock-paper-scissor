@@ -126,5 +126,5 @@ function playRound(){
             }
 
 }
-
+//Initiate the the game and play 5 rounds
 playRound();
