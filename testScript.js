@@ -16,11 +16,6 @@ buttons.forEach((button) => {
 		const playerChoice = button.getAttribute('data-text');
 		const computerChoice = getComputerChoice();
 		const choiceList = [playerChoice, computerChoice];
-		if (totalPlayerScore === 5 || totalComputerScore == 5) {
-			button.disabled = true;
-			button.innerText = 'Please press reset to start new game!';
-			return;
-		}
 		console.log(`computer chose : ${computerChoice}`);
 		console.log(`You chose : ${playerChoice}`);
 		console.log(`the list of choices :${choiceList}`);
@@ -108,10 +103,9 @@ function game(playerChoice, computerChoice) {
 function declareWinner() {
 	if (totalComputerScore === 5) {
 		console.log(
-			'Machines won this battle. We have to try harder to save the mankind ! /n Press reset button to start a new game.'
+			'You have saved the mankind ! MAchines have lost. We have won !! \n Press reset button to start a new game.'
 		);
 		resetButton.addEventListener('click', (e) => {
-			buttons.forEach((button) => (button.disabled = false));
 			playerScore = 0;
 			computerScore = 0;
 			totalPlayerScore = 0;
@@ -120,10 +114,9 @@ function declareWinner() {
 		return;
 	} else if (totalPlayerScore === 5) {
 		console.log(
-			'You have saved the mankind ! MAchines have lost. We have won !! \n Press reset button to start a new game.'
+			'Machines won this battle. We have to try harder to save the mankind ! /n Press reset button to start a new game.'
 		);
 		resetButton.addEventListener('click', (e) => {
-			buttons.forEach((button) => (button.disabled = false));
 			playerScore = 0;
 			computerScore = 0;
 			totalPlayerScore = 0;
@@ -135,27 +128,4 @@ function declareWinner() {
 			`Your current score is = ${totalPlayerScore} \n The Computer score is = ${totalComputerScore}. \ Remember, you need a score of 5 to win this round. Keep trying. Choose rock , paper or scissor !`
 		);
 	}
-}
-
-// set event listern to reset button, in case user wants to reset the game in
-// between.
-resetButton.addEventListener('click', (e) => {
-	console.log(
-		'The Game has been reset by the user. All score are rolled back 0.'
-	);
-	enableButtons();
-	playerScore = 0;
-	computerScore = 0;
-	totalPlayerScore = 0;
-	totalComputerScore = 0;
-});
-
-// Define a enableButton function which will enable all the disabled buttons and
-// change their inner text and style to enabled position.
-
-function enableButtons() {
-	buttons.forEach((button) => {
-		button.disabled = false;
-		button.innerText = button.getAttribute('data-text').toUpperCase();
-	});
 }
