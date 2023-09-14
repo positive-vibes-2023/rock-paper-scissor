@@ -1,0 +1,102 @@
+/* Ensuring that the web page covers the entire screen. */
+body {
+	margin: 0px;
+	padding: 0px;
+	height: 100vh;
+	width: 100%;
+	overflow: auto;
+}
+/* setting the body style and display properties */
+body {
+	display: flex;
+	/* arrange the containers in vertical */
+	flex-direction: column;
+	/* make sure the container wrap within body */
+	flex-wrap: wrap;
+	/* align items to the top of page */
+	justify-content: space-between;
+	align-items: center;
+	/* tell browser to use padding and margins for all div during calculations
+*/
+	box-sizing: border-box;
+}
+/* styling upper-container */
+.upper-container {
+	border: 3px solid whitesmoke;
+	/* use entire width of the body */
+	width: 100%;
+	/* use flex display to make the div responsive */
+	display: flex;
+	flex-direction: column;
+	/* align items to center*/
+	align-items: center;
+	margin-bottom: 20px;
+	/* set flex properties */
+	flex: 1 1 0;
+}
+
+/* styling the main container */
+.main-container {
+	border: 2px solid green;
+	/* use entire width of the body */
+	width: 100%;
+	/* use flex display to make the div responsive */
+	display: flex;
+	/* align items to center and space them around*/
+	align-items: center;
+	justify-content: space-around;
+	/* set flex properties */
+	flex: 3 1 0;
+}
+
+/* styling the lower container */
+.lower-container {
+	/* border: 5px solid red; */
+	/* use entire width of the body */
+	width: 100%;
+	/* use flex display to make the div responsive */
+	display: flex;
+	flex-wrap: wrap;
+	/* align items to center and space them around*/
+	align-items: center;
+	justify-content: space-around;
+	margin-bottom: 15px;
+	/* set flex properties */
+	flex: 0.6 1 0;
+}
+
+/* further styling of the lower container */
+/* arranging the contents of the lower container */
+.final-result {
+	border: 1px solid black;
+	order: -1; /*this brings the final result div to first place*/
+	flex-basis: 100%; /*this makes final result div to cover whole widht and since flex-wrap is on in parent container it pushes the other two div down*/
+	margin: 5px;
+	text-align: center;
+	height: 50px;
+}
+
+.reset,
+.info {
+	border: 1px solid green;
+	/* setting the other items in second row */
+	flex-basis: calc(10% - 20px);
+	align-items: center;
+	/* setting the buttons alignment */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 80px;
+}
+button {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	box-shadow: inset 10px 5px 5px 10px black;
+	color: rgb(248, 248, 248);
+	background-color: gray;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}

@@ -1,0 +1,140 @@
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	margin: 0px;
+	padding: 0px;
+	flex-direction: column;
+	background-color: rgb(15, 68, 50);
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.main-container {
+	display: flex;
+	background-color: rgb(15, 68, 50);
+	padding: 20px;
+	margin: 100px;
+	border-color: blanchedalmond;
+	justify-content: center;
+	width: 80vw;
+	height: 50vh;
+}
+.player-container,
+.arena,
+.computer-container {
+	display: flex;
+	border-width: 10px;
+	border-style: double;
+	margin: 0;
+	padding: 5px;
+	flex-grow: 0.7;
+	flex-shrink: 0.1;
+}
+.player-container {
+	border-radius: 50% 0 0 50%;
+	margin-left: 20px;
+}
+.computer-container {
+	border-radius: 10% 100% 100% 10%;
+	margin-right: 20px;
+}
+.arena {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 100px;
+	border-radius: 50%;
+	width: 45%;
+	height: 70%;
+	margin: 100px;
+	background-color: rgba(238, 243, 238, 10);
+	box-shadow: 15px 5px 15px 5px rgb(149, 181, 142);
+}
+.player-container,
+.computer-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	width: 20%;
+	padding: 50px;
+	background-color: rgba(238, 243, 238, 10);
+	box-shadow: 10px 10px 5px 5px rgb(100, 115, 97);
+}
+.player-choice-buttons {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	height: 100vh;
+	width: 80vw;
+}
+.but,
+.computer-but {
+	display: flex;
+	width: 15%;
+	flex-grow: 0.2;
+	justify-content: center;
+	align-items: center;
+}
+.computer-but {
+	width: 100%;
+}
+
+/* adding background image to the buttons */
+.rock-img {
+	display: inline-block;
+	background: url('./images/rock.jpg') no-repeat center center;
+	background-size: cover;
+	border: none;
+	border-radius: 60%;
+	box-shadow: -10px 20px 50px rgba(0, 0, 0, 0.887) inset,
+		-10px -8px rgb(109, 116, 113) inset;
+	border: 1px solid #e81f1f; /* Optional: Add a border for more depth */
+	position: relative;
+	z-index: 1;
+	cursor: pointer;
+	color: transparent;
+}
+.paper-img {
+	display: inline-block;
+
+	background: url('./images/paper.jpg') no-repeat center center;
+	background-size: cover;
+	border: none;
+	border-radius: 60%;
+	box-shadow: -10px 20px 50px rgba(0, 0, 0, 0.887) inset,
+		-10px -8px rgb(109, 116, 113) inset;
+	border: 1px solid #e81f1f; /* Optional: Add a border for more depth */
+	position: relative;
+	z-index: 1;
+	cursor: pointer;
+	color: transparent;
+}
+.scissor-img {
+	display: inline-block;
+
+	background: url('./images/scissor.jpg') no-repeat center center;
+	background-size: cover;
+	border: none;
+	border-radius: 60%;
+	box-shadow: -10px 20px 50px rgba(0, 0, 0, 0.887) inset,
+		-10px -8px rgb(109, 116, 113) inset;
+	border: 1px solid #e81f1f; /* Optional: Add a border for more depth */
+	position: relative;
+	z-index: 1;
+	cursor: pointer;
+	color: transparent;
+}
+.score-board {
+	box-shadow: 25px 35px 10px 10px rgb(249, 196, 232);
+	display: flex;
+	width: 80vw;
+	flex-grow: 0.3;
+	flex-shrink: 0.5;
+	justify-content: space-evenly;
+	align-items: center;
+	padding: 10px;
+	background-color: rgb(212, 179, 214);
+	border-radius: 40%;
+}

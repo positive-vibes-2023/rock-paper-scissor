@@ -4,23 +4,53 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Rock-Paper-Scissor-Game</title>
-		//temporarily disabled script while developing the index file
+		<link rel="stylesheet" href="./style.css" />
 	</head>
 	<body>
 		<h1>The Rock paper scissor game - man plays against computer !</h1>
-		<div class="player-choice-buttons">
-			<h1>
-				Select either "ROCK" , "PAPER" or :SCISSOR" by clicking the
-				corresponding button
-			</h1>
-			<button type="button" data-text="rock" class="but">ROCK!</button>
-			<button type="button" data-text="paper" class="but">PAPER!</button>
-			<button type="button" data-text="scissor" class="but">SCISSOR!</button>
+		<div class="score-board">
+			<div class="player-score">Player score</div>
+			<div class="computer score">computer score</div>
 		</div>
+		<div class="result">
+			This is where result is given after each gamey-you want and animation of
+			typing here
+		</div>
+		<div class="main-container">
+			<div class="player-container">
+				<div class="player-choice-buttons">
+					<button type="button" data-text="rock" class="but rock-img">
+						ROCK!
+					</button>
+					<button type="button" data-text="paper" class="but paper-img">
+						PAPER!
+					</button>
+					<button type="button" data-text="scissor" class="but scissor-img">
+						SCISSOR!
+					</button>
+				</div>
+			</div>
+			<div class="arena">
+				<div class="arena-but rock-img">Rock</div>
+				<div class="arena-but paper-img">Paper</div>
+				<div class="arena-but scissor-img">scissor</div>
+			</div>
+			<div class="computer-container">
+				<div class="computer-but rock-img">Rock</div>
+				<div class="computer-but paper-img">Paper</div>
+				<div class="computer-but scissor-img">scissor</div>
+			</div>
+		</div>
+
+		<div class="final-result">This is where we declare result</div>
 		<div class="reset">
 			<button type="button" data-text="reset" class="reset-but">
 				R E S E T
 			</button>
+		</div>
+		<div class="info">
+			this button if clicked will lead pop info about the rules
+			<button class="info-but" type="button">click to get info</button>
 		</div>
 		<script src="script.js"></script>
 		<!-- <script src="testScript.js"></script> -->
