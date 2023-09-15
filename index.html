@@ -7,50 +7,139 @@
 		<link rel="stylesheet" href="./style.css" />
 	</head>
 	<body>
-		<h1>The Rock paper scissor game - man plays against computer !</h1>
-		<div class="score-board">
-			<div class="player-score">Player score</div>
-			<div class="computer score">computer score</div>
-		</div>
-		<div class="result">
-			This is where result is given after each gamey-you want and animation of
-			typing here
+		<div class="upper-container">
+			<h1>The Rock paper scissor game - man plays against computer !</h1>
+			<div class="score-board">
+				<div class="player-score">Player score</div>
+				<div class="computer-score">computer score</div>
+			</div>
+			<div class="final-result">
+				This is where result is given after each gamey-you want and animation of
+				typing here
+			</div>
 		</div>
 		<div class="main-container">
 			<div class="player-container">
 				<div class="player-choice-buttons">
-					<button type="button" data-text="rock" class="but rock-img">
+					<button
+						type="button"
+						data-text="rock"
+						class="but but-resting rock-img">
 						ROCK!
 					</button>
-					<button type="button" data-text="paper" class="but paper-img">
+					<button
+						type="button"
+						data-text="paper"
+						class="but but-resting paper-img">
 						PAPER!
 					</button>
-					<button type="button" data-text="scissor" class="but scissor-img">
+					<button
+						type="button"
+						data-text="scissor"
+						class="but but-resting scissor-img">
 						SCISSOR!
 					</button>
 				</div>
 			</div>
 			<div class="arena">
-				<div class="arena-but rock-img">Rock</div>
-				<div class="arena-but paper-img">Paper</div>
-				<div class="arena-but scissor-img">scissor</div>
+				<div class="rules">
+					<p>
+						Welcome to the online RPS game. You will play against machines
+						(computer) and your goal is to save the mankind by winning against
+						Computers!
+					</p>
+					<p>
+						The objective is to reach a score of 5 before the computer in order
+						to win the game and hence save the Humans !
+					</p>
+					<h1>Game Rules:</h1>
+					<h2>Player Interaction:</h2>
+					<p>
+						The player selects their move by clicking on buttons representing
+						"Rock," "Paper," or "Scissors."
+					</p>
+					<h2>Computer's Choice:</h2>
+					<p>
+						After the player makes their selection, the computer randomly
+						chooses one of the three options (Rock, Paper, Scissors) as its
+						move.
+					</p>
+					<h2>Determining the Winner:</h2>
+					<p>
+						The winner of each round is determined by the traditional Rock,
+						Paper, Scissors rules:
+					</p>
+					<ul>
+						<li>Rock beats Scissors</li>
+						<li>Scissors beats Paper</li>
+						<li>Paper beats Rock</li>
+					</ul>
+					<h2>Scoring:</h2>
+					<p>
+						The winner of each round earns a point, and their score increases by
+						one. In the event of a tie, neither the player nor the computer
+						receives a point for that round.
+					</p>
+					<h2>Game Continuation:</h2>
+					<p>
+						The game continues round by round until one of the players (computer
+						or human) reaches a score of 5 points.
+					</p>
+					<h2>Game Over:</h2>
+					<p>
+						When one of the players reaches a score of 5, the game ends, and the
+						player with 5 points is declared the winner. A message is displayed
+						to announce the winner.
+					</p>
+					<h2>Restart:</h2>
+					<p>
+						Players can choose to restart the game if they wish to play another
+						round by pressing the reset button.
+					</p>
+					<h2>Other features of this website:</h2>
+					<p>
+						You can also speed up the game or slow it down by using the speed up
+						and speed down buttons.
+					</p>
+					<h3>
+						This game provides a simple and entertaining way to enjoy the
+						classic Rock, Paper, Scissors game against a computer.
+					</h3>
+				</div>
+				<div class="player-chose">Rock</div>
+				<div class="warning">results</div>
+				<div class="computer-chose">Paper</div>
 			</div>
 			<div class="computer-container">
-				<div class="computer-but rock-img">Rock</div>
-				<div class="computer-but paper-img">Paper</div>
-				<div class="computer-but scissor-img">scissor</div>
+				<div class="computer-but computer-but-resting computer-rock">Rock</div>
+				<div class="computer-but computer-but-resting computer-paper">
+					Paper
+				</div>
+				<div class="computer-but computer-but-resting computer-scissor">
+					scissor
+				</div>
 			</div>
 		</div>
 
-		<div class="final-result">This is where we declare result</div>
-		<div class="reset">
-			<button type="button" data-text="reset" class="reset-but">
-				R E S E T
+		<div class="lower-container">
+			<div class="result">
+				<div class="player-prompt">Players choice</div>
+				<div class="computer-prompt">Players choice</div>
+			</div>
+			<div class="reset">
+				<button type="button" data-text="reset" class="reset-but">
+					R E S E T
+				</button>
+			</div>
+			<button type="button" class="speed-up-button">
+				Click to spead up the game
 			</button>
-		</div>
-		<div class="info">
-			this button if clicked will lead pop info about the rules
-			<button class="info-but" type="button">click to get info</button>
+			<button type="button" class="slow-down-button">
+				Click to slow down the game
+			</button>
+			<div class="info">
+				<button class="info-but" type="button">click to get info</button>
+			</div>
 		</div>
 		<script src="script.js"></script>
 		<!-- <script src="testScript.js"></script> -->
