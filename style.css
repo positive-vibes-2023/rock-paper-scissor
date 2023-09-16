@@ -201,6 +201,7 @@ h1 {
 	background-color: bisque;
 	font-style: italic;
 	font-family: 'Courier New', Courier, monospace;
+	transition: display 300 ease-out;
 }
 
 .player-container,
