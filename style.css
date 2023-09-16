@@ -218,7 +218,8 @@ h1 {
 	flex-grow: 0.4;
 }
 
-.playerPrompt {
+.player-prompt,
+.computer-prompt {
 	display: 'flex';
 	justify-content: center;
 	align-items: center;
