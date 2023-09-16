@@ -47,9 +47,12 @@ infoButton.addEventListener('click', (e) => {
 let totalPlayerScore = 0;
 let totalComputerScore = 0;
 let firstDelay = 200;
-let secondDelay = 3000;
+let secondDelay = 2000;
 
 speedUp.addEventListener('click', (e) => {
+	speedUp.classList.add('speed-up-button-clicked');
+	setTimeout(() => speedUp.classList.remove('speed-up-button-clicked'), 350);
+
 	slowDown.disabled = false;
 	slowDown.innerText = 'Click to slow down the game';
 	if (secondDelay <= 500) {
@@ -63,6 +66,9 @@ speedUp.addEventListener('click', (e) => {
 });
 
 slowDown.addEventListener('click', (e) => {
+	slowDown.classList.add('slow-down-button-clicked');
+	setTimeout(() => slowDown.classList.remove('slow-down-button-clicked'), 350);
+
 	speedUp.disabled = false;
 	speedUp.innerText = 'Click to speed up the game';
 
@@ -91,7 +97,8 @@ buttons.forEach((button) => {
 		playerChose.style.display = 'block';
 		computerChose.style.display = 'block';
 		warning.style.display = 'block';
-		playerPrompt.style.display = 'block';
+
+		computerPrompt.style.disabled = 'flex';
 		const playerChoice = button.getAttribute('data-text');
 		const computerChoice = getComputerChoice();
 
@@ -282,19 +289,7 @@ function declareWinner() {
 		console.log(
 			'You have saved the mankind ! MAchines have lost. We have won !! \n Press reset button to start a new game.'
 		);
-		resetButton.addEventListener('click', (e) => {
-			buttons.forEach((button) => (button.disabled = false));
-			playerScore = 0;
-			computerScore = 0;
-			totalPlayerScore = 0;
-			totalComputerScore = 0;
-			playerPrompt.innerText = 'Human ! Choose a Weapon';
-			computerPrompt.innerText =
-				'Machines are waiting for Humans to choose a weapon';
-			playerCurrentScore.innerText = `${totalPlayerScore}`;
-			computerCurrentScore.innerText = `${totalComputerScore}`;
-			finalResult.innerText = '';
-		});
+		resetGame();
 		return;
 	} else {
 		setTimeout(function () {
@@ -344,11 +339,11 @@ function resetGame() {
 	playerChose.style.display = 'flex';
 	computerChose.style.display = 'flex';
 	playerPrompt.style.display = 'flex';
-	computerPrompt.innerText = '';
+	computerPrompt.style.display = 'flex';
 	finalResult.innerText = 'Final Results will be displayed here.';
 	buttonState = !buttonState;
+	resetButton.addEventListener('click', resetGame);
 }
-resetButton.addEventListener('click', resetGame);
 
 // Define a enableButton function which will enable all the disabled buttons and
 // change their inner text and style to enabled position.

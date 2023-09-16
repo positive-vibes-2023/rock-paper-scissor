@@ -1,4 +1,18 @@
 /* Ensuring that the web page covers the entire screen. */
+body::before {
+	content: '';
+	/* background image */
+	background-image: url(./images/background.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0.2;
+	z-index: -1;
+}
 body {
 	margin: 0px;
 	padding: 0px;
@@ -11,8 +25,7 @@ body {
 	display: flex;
 	/* arrange the containers in vertical */
 	flex-direction: column;
-	/* make sure the container wrap within body */
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	/* align items to the top of page */
 	justify-content: space-between;
 	align-items: center;
@@ -34,10 +47,31 @@ body {
 	/* set flex properties */
 	flex: 1 1 0;
 }
-
+h1 {
+	text-align: center;
+}
+.score-board {
+	display: flex;
+	justify-content: space-between;
+	width: 90%;
+	flex: 1 1;
+	color: green;
+}
+.right-score,
+.left-score {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 20px;
+}
+.player-score,
+.computer-score {
+	border: 2px solid green;
+	padding: 20px;
+}
 /* styling the main container */
 .main-container {
-	border: 2px solid green;
 	/* use entire width of the body */
 	width: 100%;
 	/* use flex display to make the div responsive */
@@ -47,11 +81,11 @@ body {
 	justify-content: space-around;
 	/* set flex properties */
 	flex: 3 1 0;
+	text-align: center;
 }
 
 /* styling the lower container */
 .lower-container {
-	/* border: 5px solid red; */
 	/* use entire width of the body */
 	width: 100%;
 	/* use flex display to make the div responsive */
@@ -62,13 +96,13 @@ body {
 	justify-content: space-around;
 	margin-bottom: 15px;
 	/* set flex properties */
-	flex: 0.6 1 0;
+	flex: 0.6 0.6 0;
 }
 
 /* further styling of the lower container */
 /* arranging the contents of the lower container */
 .result {
-	border: 1px solid black;
+	border-bottom: 2px rgb(209, 228, 209) dotted;
 	order: -1; /*this brings the final result div to first place*/
 	flex-basis: 100%; /*this makes final result div to cover whole width and since flex-wrap is on in parent container it pushes the other two div down*/
 	margin: 5px;
@@ -78,7 +112,6 @@ body {
 
 .reset,
 .info {
-	border: 1px solid green;
 	/* setting the other items in second row */
 	flex-basis: calc(10% - 20px);
 	align-items: center;
@@ -87,45 +120,122 @@ body {
 	justify-content: center;
 	align-items: center;
 	height: 80px;
+	text-align: center;
 }
-button {
+.reset-but,
+.info-but {
 	width: 100%;
 	height: 100%;
 	border-radius: 50%;
-	box-shadow: inset 10px 5px 5px 10px rgb(132, 5, 5);
-	color: rgb(248, 248, 248);
-	background-color: rgb(198, 118, 118);
+	box-shadow: inset 10px 5px 5px 10px rgb(187, 47, 47);
+	color: wite;
+	background-color: rgb(176, 125, 125);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
+	text-align: center;
 }
 
 .warning {
 	font-size: 30px;
 	font-family: cursive;
 	visibility: visible;
-	transition: font-size 0.3s ease-in;
+	text-align: center;
 }
 /* styling computer container items */
 .computer-but,
 .but {
-	border: 1px solid red;
 	width: 100px;
 	height: 100px;
 	border-radius: 50%;
-
-	color: rgb(248, 248, 248);
+	margin: 10px;
+	color: rgb(255, 255, 255);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
 }
-.but {
-	background-color: rgb(222, 112, 226);
-	box-shadow: inset 10px 5px 5px 10px rgb(122, 4, 135);
+
+.choice-img-resting {
+	max-width: 100%;
+	max-height: 100%;
+	box-shadow: 3px 1px 1px 2px inset gray;
+	border-radius: 20%;
 }
-.computer-but {
+.but-resting {
+	background-color: transparent;
+	border: none;
+}
+.computer-but-resting {
+	background-color: transparent;
+	border: none;
+}
+.but-active {
+	background-color: rgb(222, 112, 226);
+	box-shadow: 3px 1px 1px 2px inset gray;
+	width: 200px;
+	height: 120px;
+	margin: 10px;
+}
+.computer-but-active {
 	background-color: rgb(99, 159, 212);
-	box-shadow: inset 10px 5px 5px 10px rgb(4, 35, 135);
+	box-shadow: 3px 1px 1px 2px inset gray;
+	width: 200px;
+	height: 120px;
+	margin: 10px;
+}
+.choice-img-active {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.rules {
+	display: none;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 80%;
+	width: 100%;
+	overflow: visible;
+	padding: 40px;
+	background-color: bisque;
+	font-style: italic;
+	font-family: 'Courier New', Courier, monospace;
+}
+
+.player-container,
+.arena,
+.computer-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	flex-grow: 0.3;
+	height: 100%;
+	border-right: 2px dotted rgb(151, 182, 162);
+}
+.arena {
+	flex-grow: 0.4;
+}
+
+.playerPrompt {
+	display: 'flex';
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+.speed-up-button,
+.slow-down-button {
+	border: 1px solid green;
+	padding: 20px;
+	flex-wrap: wrap;
+	flex-grow: calc(50%-10px);
+	border-radius: 40%;
+	box-shadow: 5px 1px 1px 1px rgb(10, 54, 18) inset;
+	transition: border-radius 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.speed-up-button-clicked,
+.slow-down-button-clicked {
+	transition: border-radius 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+	border-radius: 30%;
 }
