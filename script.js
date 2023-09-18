@@ -21,7 +21,7 @@ const rules = document.querySelector('.rules');
 const arena = document.querySelector('.arena');
 const playerContainer = document.querySelector('.player-container');
 const computerContainer = document.querySelector('.computer-container');
-
+const scoreBoard = document.querySelector('.score-board');
 // --------------------------------------------------------------------
 // declare variables
 
@@ -58,6 +58,7 @@ function declareWinner() {
 
 		finalResult.innerText =
 			'Machines won this battle. We have to try harder to save the mankind ! \n Press reset button to start a new game.';
+		finalResult.style.textAlign = 'center';
 
 		playerCurrentScore.innerText = `${totalPlayerScore}`;
 		computerCurrentScore.innerText = `${totalComputerScore}`;
@@ -65,6 +66,8 @@ function declareWinner() {
 		console.log(
 			'Machines won this battle. We have to try harder to save the mankind ! \n Press reset button to start a new game.'
 		);
+		resetButton.disabled = false;
+		infoButton.disabled = false;
 		return;
 	} else if (totalPlayerScore === 5) {
 		playerChose.style.display = 'none';
@@ -83,12 +86,15 @@ function declareWinner() {
 
 		finalResult.innerText =
 			'You have saved the mankind ! MAchines have lost. We have won !! \n Press reset button to start a new game.';
+		finalResult.style.textAlign = 'center';
 		playerCurrentScore.innerText = `${totalPlayerScore}`;
 		computerCurrentScore.innerText = `${totalComputerScore}`;
 
 		console.log(
 			'You have saved the mankind ! MAchines have lost. We have won !! \n Press reset button to start a new game.'
 		);
+		resetButton.disabled = false;
+		infoButton.disabled = false;
 		return;
 	} else {
 		setTimeout(function () {
@@ -113,6 +119,7 @@ function declareWinner() {
 		playerCurrentScore.innerText = `${totalPlayerScore}`;
 		computerCurrentScore.innerText = `${totalComputerScore}`;
 		finalResult.innerText = `Remember, you need a score of 5 to win this round. Keep trying. Choose rock , paper or scissor !`;
+		finalResult.style.textAlign = 'center';
 		console.log(
 			`Your current score is = ${totalPlayerScore} \n The Computer score is = ${totalComputerScore}. \ Remember, you need a score of 5 to win this round. Keep trying. Choose rock , paper or scissor !`
 		);
@@ -226,14 +233,21 @@ function resumeGame() {
 	playerCurrentScore.style.display = 'flex';
 	computerCurrentScore.style.display = 'flex';
 	playerChose.style.display = 'flex';
+	playerChose.innerText = '';
 	computerChose.style.display = 'flex';
-
+	computerChose.innerText = '';
+	warning.innerText = '';
 	computerPrompt.style.display = 'flex';
+	finalResult.style.display = 'flex';
+	scoreBoard.style.display = 'flex';
 
-	finalResult.innerText = 'Final Results will be displayed here.';
-	buttonState = !buttonState;
+	finalResult.innerText = 'Game resumed.';
+	computerPrompt.innerText =
+		'Machines are waiting for humans to choose a weapon!';
+	buttonState = true;
 }
 function handleResetButton() {
+	console.log('reset button clicked');
 	allButtons.forEach((button) => {
 		button.disabled = false;
 	});
@@ -243,18 +257,58 @@ function handleResetButton() {
 	playerCurrentScore.innerText = '0';
 	computerCurrentScore.innerText = '0';
 	rules.style.display = 'none';
+	finalResult.style.display = 'flex';
+	scoreBoard.style.display = 'flex';
 	computerContainer.style.display = 'flex';
 	playerContainer.style.display = 'flex';
-	warning.style.display = 'flex';
+	warning.style.display = 'none';
 	playerCurrentScore.style.display = 'flex';
 	computerCurrentScore.style.display = 'flex';
-	playerChose.style.display = 'flex';
-	computerChose.style.display = 'flex';
-
+	playerChose.style.display = 'none';
+	computerChose.style.display = 'none';
 	computerPrompt.style.display = 'flex';
-
+	speedUp.innerText = 'Click to speed up the game';
+	slowDown.innerText = 'Click to slow down the game';
+	firstDelay = 200;
+	let secondDelay = 2000;
+	let buttonState = true;
 	finalResult.innerText = 'Final Results will be displayed here.';
-	buttonState = !buttonState;
+}
+
+function handleSpeedUpBUtton() {
+	console.log('speed up button clicked');
+	slowDown.disabled = false;
+	slowDown.innerText = 'Click to slow down the game';
+	if (secondDelay <= 500) {
+		speedUp.innerText = 'Thats the fastest you can go!';
+		speedUp.disabled = true;
+	} else {
+		speedUp.innerText = 'Click to speed up the game';
+		firstDelay = firstDelay - 50;
+		secondDelay = secondDelay - 300;
+		speedUp.classList.add('speed-up-button-clicked');
+		setTimeout(function () {
+			speedUp.classList.remove('speed-up-button-clicked');
+		}, 400);
+	}
+}
+function handleSlowDownButton() {
+	console.log('slow down button clicked');
+	speedUp.disabled = false;
+	speedUp.innerText = 'Click to speed up the game';
+
+	if (firstDelay >= 550 || secondDelay >= 6900) {
+		slowDown.innerText = 'Thats the fastest you can go!';
+		slowDown.disabled = true;
+	} else {
+		slowDown.innerText = 'Click to slow down the game';
+		firstDelay = firstDelay + 50;
+		secondDelay = secondDelay + 300;
+		slowDown.classList.add('speed-up-button-clicked');
+		setTimeout(function () {
+			slowDown.classList.remove('speed-up-button-clicked');
+		}, 400);
+	}
 }
 // -------------------------------------------------------------------------
 // set event listeners
@@ -270,9 +324,11 @@ infoButton.addEventListener('click', (e) => {
 		playerChose.style.display = 'none';
 		computerChose.style.display = 'none';
 
-		computerPrompt.style.display = 'none';
-		computerPrompt.innerText = 'Game Paused !';
+		scoreBoard.style.display = 'none';
 
+		computerPrompt.style.display = 'flex';
+		computerPrompt.innerText = 'Game Paused !';
+		finalResult.style.display = 'flex';
 		finalResult.innerText =
 			'Game is currently paused. Press Reset  or Info button to resume';
 		console.log(buttonState);
@@ -283,11 +339,16 @@ infoButton.addEventListener('click', (e) => {
 		resumeGame();
 	}
 });
+resetButton.addEventListener('click', () => {
+	handleResetButton();
+});
+speedUp.addEventListener('click', () => handleSpeedUpBUtton());
+slowDown.addEventListener('click', () => handleSlowDownButton());
 
 buttons.forEach((button) => {
 	button.addEventListener('click', (e) => {
-		allButtons.forEach((button) => {
-			button.disabled = true;
+		allButtons.forEach((b) => {
+			b.disabled = true;
 		});
 		playerChose.style.display = 'block';
 		computerChose.style.display = 'block';
@@ -307,12 +368,12 @@ buttons.forEach((button) => {
 			computerScissor.classList.add('computer-but-active');
 		}
 
-		if ((totalPlayerScore) => -5 || totalComputerScore >= 5) {
-			buttons.forEach((button) => {
-				button.disabled = true;
-				warning.innerText = 'Ended ! Please press reset to start new game.';
-				return;
-			});
+		if (totalPlayerScore >= 5 || totalComputerScore >= 5) {
+			warning.innerText = 'Ended ! Please press reset to start new game.';
+			console.log('trying to activate reset button');
+			resetButton.disabled = false;
+			console.log('the resetbutton should be now activated');
+			infoButton.disabled = false;
 		}
 		playerChose.innerText = `You chose : ${playerChoice}`;
 		computerChose.innerText = `Computer chose : ${computerChoice}`;
@@ -322,5 +383,3 @@ buttons.forEach((button) => {
 		game(choiceList[0], choiceList[1]);
 	});
 });
-
-resetButton.addEventListener('click', handleResetButton());
