@@ -11,13 +11,14 @@ body::before {
 	width: 100%;
 	height: 100%;
 	opacity: 0.2;
-	z-index: -1;
+	z-index: -2;
 }
 body {
 	margin: 0px;
 	padding: 0px;
 	height: 100vh;
 	width: 100%;
+	background-color: violet;
 	overflow: auto;
 }
 /* setting the body style and display properties */
@@ -43,9 +44,9 @@ body {
 	flex-direction: column;
 	/* align items to center*/
 	align-items: center;
-	margin-bottom: 20px;
+	margin-bottom: 3px dotted;
 	/* set flex properties */
-	flex: 1 1 0;
+	flex: 0.6 0.6 0;
 }
 h1 {
 	text-align: center;
@@ -64,10 +65,11 @@ h1 {
 	justify-content: center;
 	align-items: center;
 	margin: 20px;
+	color: white;
 }
 .player-score,
 .computer-score {
-	border: 2px solid green;
+	border: 2px solid rgb(139, 41, 178);
 	padding: 20px;
 }
 /* styling the main container */
@@ -80,7 +82,7 @@ h1 {
 	align-items: center;
 	justify-content: space-around;
 	/* set flex properties */
-	flex: 3 1 0;
+	flex: 2 1 0;
 	text-align: center;
 }
 
@@ -127,9 +129,9 @@ h1 {
 	width: 100%;
 	height: 100%;
 	border-radius: 50%;
-	box-shadow: inset 10px 5px 5px 10px rgb(187, 47, 47);
+	box-shadow: inset 1px 5px 5px 1px rgb(242, 238, 241);
 	color: wite;
-	background-color: rgb(176, 125, 125);
+	background-color: rgb(171, 36, 144);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -160,9 +162,10 @@ h1 {
 .choice-img-resting {
 	max-width: 100%;
 	max-height: 100%;
-	box-shadow: 3px 1px 1px 2px inset gray;
 	border-radius: 20%;
+	transition: box-shadow, 200, ease;
 }
+
 .but-resting {
 	background-color: transparent;
 	border: none;
@@ -172,15 +175,15 @@ h1 {
 	border: none;
 }
 .but-active {
-	background-color: rgb(222, 112, 226);
-	box-shadow: 3px 1px 1px 2px inset gray;
+	background-color: transparent;
+	box-shadow: 3px 1px 1px 2px inset rgb(242, 237, 243);
 	width: 200px;
 	height: 120px;
 	margin: 10px;
 }
 .computer-but-active {
-	background-color: rgb(99, 159, 212);
-	box-shadow: 3px 1px 1px 2px inset gray;
+	background-color: transparent;
+	box-shadow: 3px 1px 1px 2px inset rgb(255, 252, 252);
 	width: 200px;
 	height: 120px;
 	margin: 10px;
@@ -193,6 +196,7 @@ h1 {
 .rules {
 	display: none;
 	flex-direction: column;
+	flex-grow: 2;
 	flex-wrap: wrap;
 	height: 80%;
 	width: 100%;
@@ -228,12 +232,12 @@ h1 {
 }
 .speed-up-button,
 .slow-down-button {
-	border: 1px solid green;
+	border: 1px solid white;
 	padding: 20px;
 	flex-wrap: wrap;
 	flex-grow: calc(50%-10px);
 	border-radius: 40%;
-	box-shadow: 5px 1px 1px 1px rgb(10, 54, 18) inset;
+	box-shadow: 5px 1px 1px 1px rgb(252, 254, 252) inset;
 	transition: border-radius 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 .speed-up-button-clicked,
