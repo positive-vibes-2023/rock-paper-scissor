@@ -1,0 +1,254 @@
+/* Ensuring that the web page covers the entire screen. */
+body::before {
+	content: '';
+	/* background image */
+	background-image: url(./images/background.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0.2;
+	z-index: -2;
+}
+body {
+	margin: 0px;
+	padding: 0px;
+	height: 100vh;
+	width: 100%;
+	background-color: violet;
+	overflow: auto;
+}
+/* setting the body style and display properties */
+body {
+	display: flex;
+	/* arrange the containers in vertical */
+	flex-direction: column;
+	flex-wrap: nowrap;
+	/* align items to the top of page */
+	justify-content: space-between;
+	align-items: center;
+	/* tell browser to use padding and margins for all div during calculations
+*/
+	box-sizing: border-box;
+}
+/* styling upper-container */
+.upper-container {
+	border: 3px solid whitesmoke;
+	/* use entire width of the body */
+	width: 100%;
+	/* use flex display to make the div responsive */
+	display: flex;
+	flex-direction: column;
+	/* align items to center*/
+	align-items: center;
+	margin-bottom: 3px dotted;
+	/* set flex properties */
+	flex: 0.6 0.6 0;
+}
+h1 {
+	text-align: center;
+}
+.score-board {
+	display: flex;
+	justify-content: space-between;
+	width: 90%;
+	flex: 1 1;
+	color: green;
+}
+.right-score,
+.left-score {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 20px;
+	color: white;
+}
+.player-score,
+.computer-score {
+	border: 2px solid rgb(139, 41, 178);
+	padding: 20px;
+}
+/* styling the main container */
+.main-container {
+	/* use entire width of the body */
+	width: 100%;
+	/* use flex display to make the div responsive */
+	display: flex;
+	/* align items to center and space them around*/
+	align-items: center;
+	justify-content: space-around;
+	/* set flex properties */
+	flex: 2 1 0;
+	text-align: center;
+}
+div.computer-container > h1 {
+	text-decoration-line: overline;
+	font-family: 'Courier New', Courier, monospace;
+}
+div.player-container > h1 {
+	text-decoration-line: overline;
+	font-family: 'Courier New', Courier, monospace;
+}
+/* styling the lower container */
+.lower-container {
+	/* use entire width of the body */
+	width: 100%;
+	/* use flex display to make the div responsive */
+	display: flex;
+	flex-wrap: wrap;
+	/* align items to center and space them around*/
+	align-items: center;
+	justify-content: space-around;
+	margin-bottom: 15px;
+	/* set flex properties */
+	flex: 0.6 0.6 0;
+}
+
+/* further styling of the lower container */
+/* arranging the contents of the lower container */
+.result {
+	border-bottom: 2px rgb(209, 228, 209) dotted;
+	order: -1; /*this brings the final result div to first place*/
+	flex-basis: 100%; /*this makes final result div to cover whole width and since flex-wrap is on in parent container it pushes the other two div down*/
+	margin: 5px;
+	text-align: center;
+	height: 50px;
+}
+
+.reset,
+.info {
+	/* setting the other items in second row */
+	flex-basis: calc(10% - 20px);
+	align-items: center;
+	/* setting the buttons alignment */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 80px;
+	text-align: center;
+}
+.reset-but,
+.info-but {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	box-shadow: inset 1px 5px 5px 1px rgb(242, 238, 241);
+	color: wite;
+	background-color: rgb(171, 36, 144);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	text-align: center;
+}
+
+.warning {
+	font-size: 30px;
+	font-family: cursive;
+	visibility: visible;
+	text-align: center;
+}
+/* styling computer container items */
+.computer-but,
+.but {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	margin: 10px;
+	color: rgb(255, 255, 255);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.choice-img-resting {
+	max-width: 100%;
+	max-height: 100%;
+	border-radius: 20%;
+	transition: box-shadow, 200, ease;
+}
+
+.but-resting {
+	background-color: transparent;
+	border: none;
+}
+.computer-but-resting {
+	background-color: transparent;
+	border: none;
+}
+.but-active {
+	background-color: transparent;
+	box-shadow: 3px 1px 1px 2px inset rgb(242, 237, 243);
+	width: 200px;
+	height: 120px;
+	margin: 10px;
+}
+.computer-but-active {
+	background-color: transparent;
+	box-shadow: 3px 1px 1px 2px inset rgb(255, 252, 252);
+	width: 200px;
+	height: 120px;
+	margin: 10px;
+}
+.choice-img-active {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.rules {
+	display: none;
+	flex-direction: column;
+	flex-grow: 2;
+	flex-wrap: wrap;
+	height: 80%;
+	width: 100%;
+	overflow: visible;
+	padding: 40px;
+	background-color: bisque;
+	font-style: italic;
+	font-family: 'Courier New', Courier, monospace;
+	transition: display 300 ease-out;
+}
+
+.player-container,
+.arena,
+.computer-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	flex-grow: 0.3;
+	height: 100%;
+	border-right: 2px dotted rgb(151, 182, 162);
+}
+.arena {
+	flex-grow: 0.4;
+}
+
+.player-prompt,
+.computer-prompt {
+	display: 'flex';
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+.speed-up-button,
+.slow-down-button {
+	border: 1px solid white;
+	padding: 20px;
+	flex-wrap: wrap;
+	flex-grow: calc(50%-10px);
+	border-radius: 40%;
+	box-shadow: 5px 1px 1px 1px rgb(252, 254, 252) inset;
+	transition: border-radius 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.speed-up-button-clicked,
+.slow-down-button-clicked {
+	transition: border-radius 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+	border-radius: 30%;
+}
